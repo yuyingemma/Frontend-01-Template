@@ -86,7 +86,6 @@ JS的类型与语法
         DoubleStringCharacter双引号语法：
         反引号语法：`I said :”${s1}”,”{s2}”`
         拓展\r,\n，老式打印机上这是两个动作，ASCII从中继承了这两个动作
-      <template>//todo
       Boolean
           值：true && false
       Undefined
