@@ -1,7 +1,7 @@
 # 每周总结可以写在这里
 ## JS中所有的对象
 ### ordinary object-普通对象
-万物起源，对象的始祖，ordinary objectj具备了对象的内置方法
+ordinary objectj具备了对象的内置方法
 ### exotic object-外来对象
 如果不完全具备普通对象的基本内置方法，那么这个对象就被称为外来对象，JS标准里，非普通对象就是外来对象
 1. Bound Function-有界函数外来对象
