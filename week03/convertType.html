@@ -1,0 +1,90 @@
+<script>
+    function convertStringToNumber(string,x){
+        // console.log(typeof string)
+        var chars = string.split('');
+        var number = 0;
+        var i = 0;
+        var hexCode = {
+                    '0': 0,
+                    '1': 1,
+                    '2': 2,
+                    '3': 3,
+                    '4': 4,
+                    '5': 5,
+                    '6': 6,
+                    '7': 7,
+                    '8': 8,
+                    '9': 9,
+                    'a': 10,
+                    'b': 11,
+                    'c': 12,
+                    'd': 13,
+                    'e': 14,
+                    'f': 15,
+                } 
+
+            while(i < chars.length&&chars[i]!='.'){
+                number = number * x;
+                if (x === 16){
+                let code = hexCode[chars[i].toLowerCase()];
+                //codePointAt():查找对应的unicode值
+                // number +=chars[i].codePointAt(0) - '0'.codePointAt(0);//隐式转换
+                number +=code - '0';//隐式转换
+                }else{
+                //codePointAt():查找对应的unicode值
+                // number +=chars[i].codePointAt(0) - '0'.codePointAt(0);//隐式转换
+                number +=chars[i] - '0';//隐式转换
+            }
+        
+
+                // console.log(number);
+                i++;
+            }
+            // console.log(number)
+            if(chars[i] == '.'){
+                i++;
+            }
+            var fraction = 0;
+            while(i < chars.length){
+                fraction = fraction / x;
+                if (x === 16){
+                let code = hexCode[chars[i].toLowerCase()];
+                //codePointAt():查找对应的unicode值
+                
+                // number +=chars[i].codePointAt(0) - '0'.codePointAt(0);//隐式转换
+                number +=(code - '0')*fraction;//隐式转换
+        }else{
+                number += (chars[i].codePointAt(0) - '0'.codePointAt(0)) * fraction;
+                    
+                }
+                i++;
+            }
+    
+    
+        return number;
+
+    
+    }
+    console.log(convertStringToNumber('2b67',16));
+
+
+    function convertNumberToString(number,x){
+        var integer = Math.floor(number);//取整数
+        var fraction = Math.round((number - integer) *10000)/10000;
+        var string = '';
+    
+
+        while(integer > 0){
+                string = String(integer % x) + string;
+                integer = Math.floor(integer / x)
+        }
+        string +='.';
+        while(0 < fraction && fraction < 1){
+            string +=String(Math.floor(fraction * x));//取整数位
+            fraction = fraction * x;
+        }
+       return string;
+    }
+    console.log(convertNumberToString(10.02,2));
+    
+</script>
